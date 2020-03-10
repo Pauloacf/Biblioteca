@@ -4,18 +4,29 @@
 #include <string.h>
 
 typedef struct livro {
-   char nome[1000], autor[1000];
-   long long int isbn;
+   char nome[1000], autor[1000], isbn[1000];
    float preco; 
 } livro;
 
-void inserir_livro(livro *nome, livro *autor, livro *isbn, livro *preco){
+void inserir_livro(){
     FILE *file;
-    fopen("livros.txt", "a");
-    fprintf(file, nome, "\n");
-    fprintf(file, autor, "\n");
-    fprintf(file, isbn, "\n");
-    fprintf(file, preco, "\n");
+    file = fopen("library.txt", "a");
+    livro novo;
+    printf("Digite o nome do livro:\n");
+    getchar();
+    scanf(" %s", novo.nome);
+    fprintf(file, "%s\n", novo.nome);
+    printf("Digite o nome do autor:\n");
+    getchar();
+    scanf(" %s", novo.autor);
+    fprintf(file, "%s\n", novo.autor);
+    printf("Digite o ISBN:\n");
+    getchar();
+    scanf(" %s", novo.isbn);
+    fprintf(file, "%s\n", novo.isbn);
+    printf("Digite o valor:\n");
+    scanf("%f", &novo.preco);
+    fprintf(file, "%.2f\n", novo.preco);
     fclose(file);
 }
 
@@ -30,16 +41,8 @@ int main(){
 
         switch (option){
         case 1:
-            livro teste;
-            teste.nome;
-            teste.autor;
-            strcpy(teste.nome, "Fundamentos de Sistemas Operacionais");
-            strcpy(teste.autor, "Silberschatz");
-            teste.isbn = 9788521617471;
-            teste.preco = 250.0;
-            inserir_livro(teste.nome, teste.autor, teste.isbn, teste.preco);
+            inserir_livro();
             printf("1\n");
-            break;
         
         case 2:
             printf("2\n");
